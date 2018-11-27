@@ -3,11 +3,11 @@ const person = {
   age: 29
 };
 
+// ポインターをコピーしている
 const secondPerson = person;
 
 person.name = 'manu';
 
-// 要素のコピーではなく、ポインターになる
 console.log(secondPerson);
 
 const thirdPerson = {
