@@ -35,10 +35,11 @@ class App extends Component {
   }
 
   render() {
-    const persons = this.state.persons.map( person =>
-                      <Person name={person.name}
-                              age={person.age}
-                              changed={this.nameChangeHandler}/> );
+    // 一つのみonChangeのイベントを発生させたい場合はmapを使わない
+    // const persons = this.state.persons.map( person =>
+    //                   <Person name={person.name}
+    //                           age={person.age}
+    //                           changed={this.nameChangeHandler}/> );
 
     return (
       <div className="App">
@@ -49,12 +50,14 @@ class App extends Component {
           // ↓ newNameを渡してstateを更新する場合、bindする必要がある
         }
         <button onClick={this.switchNameHandler.bind(this, 'takumi')}>Switch Name</button>
-        { persons }
         {
-          // <Person name={this.state.persons[0].name} age={this.state.persons[0].name}/>
-          // <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>My Hobbies: Racing</Person>
-          // <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
+          // persons
         }
+        <Person name={this.state.persons[0].name}
+                age={this.state.persons[0].name}
+                changed={this.nameChangeHandler} />
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>My Hobbies: Racing</Person>
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
       </div>
     );
   }
